@@ -1,0 +1,14 @@
+<volume>
+    <name>$name$.qcow2</name>
+    <allocation>0</allocation>
+    <capacity unit="MB">$disk$</capacity>
+    <target>
+        <format type='qcow2'/>
+        <permissions>
+            <owner>107</owner>
+            <group>107</group>
+            <mode>0744</mode>
+            <label>$name$</label>
+        </permissions>
+    </target>
+</volume>
