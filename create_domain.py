@@ -1,4 +1,5 @@
-# Example-8.py
+# New VM is created with given configuration
+
 from __future__ import print_function
 import sys
 import libvirt
@@ -25,9 +26,6 @@ xmlconfig = xmlconfig.replace('$memory$',memory)
 xmlconfig = xmlconfig.replace('$image$',image)
 xmlconfig = xmlconfig.replace('$cpu$',cpu)
 
-#print(xmlconfig)
-#sys.exit()
-
 conn = libvirt.open('qemu:///system')
 if conn == None:
     print('Failed to open connection to qemu:///system', file=sys.stderr)
@@ -38,11 +36,13 @@ if pool == None:
  print('Failed to locate any StoragePool objects.', file=sys.stderr)
  exit(1)
 
+# Volume is created in pool available (configuation in volume.xml)
 stgvol = pool.createXML(stgvol_xml, 0)
 if stgvol == None:
  print('Failed to create a StorageVol objects.', file=sys.stderr)
  exit(1)
 
+# VM is created (configuation in domain.xml)
 dom = conn.defineXML(xmlconfig)
 if dom == None:
     print('Failed to define a domain from an XML definition.', file=sys.stderr)
