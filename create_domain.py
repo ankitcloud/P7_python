@@ -12,13 +12,13 @@ image = 'slax'
 cpu = '1'
 disk = '10240'
 
-f = open("volume.xml", "r")
+f = open("xml/volume.xml", "r")
 stgvol_xml = f.read()
 f.close()
 stgvol_xml = stgvol_xml.replace('$name$',name)
 stgvol_xml = stgvol_xml.replace('$disk$',disk)
 
-f = open("domain.xml", "r")
+f = open("xml/domain.xml", "r")
 xmlconfig = f.read()
 f.close()
 xmlconfig = xmlconfig.replace('$name$',name)
