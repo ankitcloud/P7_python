@@ -9,7 +9,8 @@ ts = time.time()
 name = 'VM_demo'+str(ts)
 memory = '1024'
 image = 'slax'
-cpu = '1'
+current_cpu = '1'
+available_cpu = '4'
 disk = '10240'
 
 f = open("xml/volume.xml", "r")
@@ -24,7 +25,8 @@ f.close()
 xmlconfig = xmlconfig.replace('$name$',name)
 xmlconfig = xmlconfig.replace('$memory$',memory)
 xmlconfig = xmlconfig.replace('$image$',image)
-xmlconfig = xmlconfig.replace('$cpu$',cpu)
+xmlconfig = xmlconfig.replace('$current_cpu$',current_cpu)
+xmlconfig = xmlconfig.replace('$available_cpu$',available_cpu)
 
 conn = libvirt.open('qemu:///system')
 if conn == None:
